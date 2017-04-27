@@ -1,0 +1,392 @@
+﻿<krpano version="1.19" title="Corfu Holiday Trip" onstart="wait(0);startup();">
+    <include url="skin/vtourskin.xml" />
+
+    <include url="autorotate.xml" />
+    <!--<plugin name="editor" url="plugins/editor.swf" keep="true" />-->
+    <contextmenu fullscreen="false" versioninfo="false" />
+    <!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+    <skin_settings maps="false"
+                   maps_type="bing"
+                   maps_bing_api_key=""
+                   maps_zoombuttons="false"
+                   gyro="true"
+                   webvr="true"
+                   webvr_gyro_keeplookingdirection="true"
+                   littleplanetintro="false"
+                   title="false"
+                   thumbs="false"
+                   thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+                   thumbs_opened="false"
+                   thumbs_text="false"
+                   thumbs_dragging="true"
+                   thumbs_onhoverscrolling="false"
+                   thumbs_scrollbuttons="false"
+                   thumbs_scrollindicator="false"
+                   thumbs_loop="false"
+                   tooltips_buttons="false"
+                   tooltips_thumbs="false"
+                   tooltips_hotspots="false"
+                   tooltips_mapspots="false"
+                   deeplinking="false"
+                   loadscene_flags="MERGE"
+                   loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+                   loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+                   loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+                   loadingtext=""
+                   layout_width="100%"
+                   layout_maxwidth="814"
+                   controlbar_width="-24"
+                   controlbar_height="40"
+                   controlbar_offset="-200"
+                   controlbar_offset_closed="-40"
+                   controlbar_overlap.no-fractionalscaling="10"
+                   controlbar_overlap.fractionalscaling="0"
+                   design_skin_images="vtourskin.png"
+                   design_bgcolor="0x2D3E50"
+                   design_bgalpha="0.8"
+                   design_bgborder="0"
+                   design_bgroundedge="1"
+                   design_bgshadow="0 4 10 0x000000 0.3"
+                   design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+                   design_thumbborder_padding="2"
+                   design_thumbborder_bgroundedge="0"
+                   design_text_css="color:#FFFFFF; font-family:Arial;"
+                   design_text_shadow="1"
+            />
+
+    var scene=0;
+    <!-- startup action - load the first scene -->
+    <action name="startup" autorun="onstart">
+        if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+        loadscene(get(startscene), null, MERGE);
+        if(startactions !== null, startactions() );
+    </action>
+    <scene name="scene_scene1" title="010" onstart="" havevrimage="true" thumburl="panos/010.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+
+        <preview url="panos/010.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="1024" tiledimageheight="1024">
+                <cube url="panos/010.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/010.tiles/vr/pano_%s.jpg" />
+        </image>
+
+        <events onviewchanged="page_change1();"></events>
+        <hotspot name="arrow1" url="img/arrow.png" ath="0" atv="30" scale="0.8" distorted="true" onclick="js(HOTSPOT.changeScene(1))"/>
+        <!--place your scene hotspots here -->
+
+    </scene>
+    <scene name="scene_scene2" title="011" onstart="" havevrimage="true" thumburl="panos/011.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <events name="page2" onviewchanged="viewchange();"></events>
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="90" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/011.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="2560" tiledimageheight="2560">
+                <cube url="panos/011.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="1280" tiledimageheight="1280">
+                <cube url="panos/011.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="640" tiledimageheight="640">
+                <cube url="panos/011.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/011.tiles/vr/pano_%s.jpg" />
+        </image>
+
+        <events onviewchanged="page_change2();"></events>
+        <hotspot name="spot012" url="spot/spot6.png" onloaded="do_crop_animation(128,128, 50);" ath="0" atv="7"  scale="0.4" distorted="true" onclick="js(detail_show(0););"/>
+
+
+    </scene>
+
+
+    <scene name="scene_scene3" title="020" onstart="" havevrimage="true" thumburl="panos/030.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/030.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="1024" tiledimageheight="1024">
+                <cube url="panos/030.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/030.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change3();"></events>
+        <hotspot name="arrow2" url="img/arrow.png" ath="-89" atv="30" scale="0.8" distorted="true" onclick="js(HOTSPOT.changeScene(3))"/>
+
+    </scene>
+    <scene name="scene_scene4" title="021" onstart="" havevrimage="true" thumburl="panos/031.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <events  name="page4" onviewchanged="viewchange();"></events>
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="90" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/031.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="2560" tiledimageheight="2560">
+                <cube url="panos/031.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="1280" tiledimageheight="1280">
+                <cube url="panos/031.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="640" tiledimageheight="640">
+                <cube url="panos/031.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/031.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change4();"></events>
+        <hotspot name="spot022" url="spot/spot6.png" onloaded="do_crop_animation(128,128, 30);" ath="-25" atv="14" scale="0.4" distorted="true" onclick="js(detail_show(1));"/>
+
+        <!-- place your scene hotspots here -->
+
+    </scene>
+
+    <scene name="scene_scene5" title="030" onstart="" havevrimage="true" thumburl="panos/020.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/020.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="1024" tiledimageheight="1024">
+                <cube url="panos/020.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/020.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change5();"></events>
+        <hotspot name="arrow3" url="img/arrow.png" ath="4" atv="20" scale="0.8" distorted="true" onclick="js(HOTSPOT.changeScene(5))"/>
+
+
+    </scene>
+    <scene name="scene_scene6" title="031" onstart="" havevrimage="true" thumburl="panos/021.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <events  name="page6" onviewchanged="view_change();"></events>
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="90" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/021.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="2560" tiledimageheight="2560">
+                <cube url="panos/021.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="1280" tiledimageheight="1280">
+                <cube url="panos/021.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="640" tiledimageheight="640">
+                <cube url="panos/021.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/021.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change6();"></events>
+        <hotspot name="spot032" url="spot/spot6.png" onloaded="do_crop_animation(128,128, 30);" ath="-0" atv="14" scale="0.4" distorted="true" onclick="js(detail_show(2));"/>
+
+    </scene>
+
+    <scene name="scene_scene7" title="040" onstart="" havevrimage="true" thumburl="panos/040.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="100" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/040.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="1024" tiledimageheight="1024">
+                <cube url="panos/040.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/040.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change7();"></events>
+        <hotspot name="arrow4" url="img/arrow.png" ath="170" atv="35" scale="0.8" distorted="true" onclick="js(HOTSPOT.changeScene(7))"/>
+        <!-- place your scene hotspots here -->
+
+    </scene>
+
+
+    <scene name="scene_scene8" title="041" onstart="" havevrimage="true" thumburl="panos/041.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <events  name="page8" onviewchanged="view_change();"></events>
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="90" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/041.tiles/preview.jpg" />
+
+        <image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+            <level tiledimagewidth="2560" tiledimageheight="2560">
+                <cube url="panos/041.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="1280" tiledimageheight="1280">
+                <cube url="panos/041.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+            </level>
+            <level tiledimagewidth="640" tiledimageheight="640">
+                <cube url="panos/041.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+            </level>
+        </image>
+
+        <image if="webvr.isenabled">
+            <cube url="panos/041.tiles/vr/pano_%s.jpg" />
+        </image>
+        <events onviewchanged="page_change8();"></events>
+        <hotspot name="spot032" url="spot/spot6.png" onloaded="do_crop_animation(128,128, 30);" ath="-0" atv="14" scale="0.4" distorted="true" onclick="js(detail_show(3));"/>
+        <!-- place your scene hotspots here -->
+
+    </scene>
+
+
+    <action name="page_change1">
+        set(autorotate.enabled,true);
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a LT -359,js(HOTSPOT.changeScene(1)));
+        set(plugin[skin_gyro].enabled,false);
+        <!--showlog();trace(a)-->
+        <!--if(a == 90,;js(HOTSPOT.changeScene(7)););-->
+    </action>
+    <action name="page_change2">
+        set(autorotate.enabled,false);
+        set(plugin[skin_gyro].enabled,true);
+    </action>
+    <action name="page_change3">
+
+        set(autorotate.enabled,true);
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a GT -90 AND a LT -89,js(HOTSPOT.changeScene(3)));
+        set(plugin[skin_gyro].enabled,false);
+        <!--if(a LT -358,js(HOTSPOT.changeScene(3)));-->
+    </action>
+    <action name="page_change4">
+        set(autorotate.enabled,false);
+        set(plugin[skin_gyro].enabled,true)
+    </action>
+    <action name="page_change5">
+
+        set(autorotate.enabled,true);
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a LT -358,js(HOTSPOT.changeScene(5)););
+        set(plugin[skin_gyro].enabled,false);
+    </action>
+    <action name="page_change6">
+        set(autorotate.enabled,false);
+        set(plugin[skin_gyro].enabled,true);
+    </action>
+    <action name="page_change7">
+        set(autorotate.enabled,true);
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a GT -190 AND a LT -189,js(HOTSPOT.changeScene(7)););
+        set(plugin[skin_gyro].enabled,false);
+    </action>
+    <action name="page_change8">
+        set(autorotate.enabled,false);
+        set(plugin[skin_gyro].enabled,true);
+    </action>
+    <action name="change">
+        <!--showlog();trace(%1);-->
+        set(layer[loading].visible,true);
+
+        loadscene(%1, null, MERGE,OPENBLEND(1.0, -0.5, 0.3, 0.8, linear));lookat(%2,%3);
+    </action>
+    <action name="viewchange">
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a LT 0,add(a,360));
+
+        if(a LT 60,js(view_flag(1)););
+        if(a GT 300,js(view_flag(1)););
+        if(a GT 60 AND a LT 180,js(view_flag(3)););
+        if(a GT 180 AND a LT 300,js(view_flag(4)););
+        <!--if(a GT 250.61 AND a LT 256,tween(hotspot[spot2].alpha,1,0.3);,tween(hotspot[spot2].alpha,0,0.3););-->
+    </action>
+    <action name="view_change">
+        set(a,get(view.hlookat));
+        mod(a,360);
+        if(a LT 0,add(a,360));
+
+        if(a LT 60,js(view_flag(2)););
+        if(a GT 300,js(view_flag(2)););
+        if(a GT 60 AND a LT 180,js(view_flag(3)););
+        if(a GT 180 AND a LT 300,js(view_flag(4)););
+    </action>
+
+
+    <action name="do_crop_animation">
+        <!-- add attributes to the hotspot -->
+        registerattribute(xframes, calc((imagewidth / %1) BOR 0));
+        registerattribute(yframes, calc((imageheight / %2) BOR 0));
+        registerattribute(frames, calc(xframes * yframes));
+        registerattribute(frame, 0);
+
+        set(crop, '0|0|%1|%2');
+
+        setinterval(calc('crop_anim_' + name), calc(1.0 / %3),
+        if(loaded,
+        inc(frame);
+        if(frame GE frames, if(onlastframe !== null, onlastframe() ); set(frame,0); );
+        mod(xpos, frame, xframes);
+        div(ypos, frame, xframes);
+        Math.floor(ypos);
+        mul(xpos, %1);
+        mul(ypos, %2);
+        calc(crop, xpos + '|' + ypos + '|%1|%2');
+        ,
+        clearinterval(calc('crop_anim_' + name));
+        );
+        );
+    </action>
+    <action name="tweenIn">
+        if(scale == 0.2,
+        tween(scale,0.15,0.3,default,tweenIn())
+        ,
+        tween(scale,0.2,0.3,default,tweenIn())
+        );
+
+    </action>
+    <action name="tweenRotate">
+        if(rotate == 0,
+        tween(rotate,360,1,linear,tweenRotate())
+        ,
+        tween(rotate,0,0,linear,tweenRotate())
+        );
+
+    </action>
+    <layer name="loading"
+           url="spot/load.png"
+           align="middle" scale="0.5"
+           onloaded="tweenRotate();"
+            />
+    <events name="startlogoevents" keep="true"
+            onloadcomplete="set(layer[loading].visible,false));)
+	"/>
+</krpano>

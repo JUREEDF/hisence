@@ -1,0 +1,179 @@
+@charset "utf-8";
+/*==================reset ===================*/
+/*rem计算 width:640px-PSD*/
+html{font-size: 100px;}
+@media only screen and (max-width: 600px) {
+    html{font-size: 93.75px;}
+}
+@media only screen and (max-width: 540px) {
+    html{font-size: 84.375px;}
+}
+@media only screen and (max-width: 480px) {
+    html{font-size: 75px;}
+}
+@media only screen and (max-width: 435px) {
+    html{font-size: 67.96875px;}
+}
+@media only screen and (max-width: 414px) {
+    html{font-size: 64.6875px;}
+}
+@media only screen and (max-width: 412px) {
+    html{font-size: 64.375px;}
+}
+@media only screen and (max-width: 411px) {
+    html{font-size: 64.21875px;}
+}
+@media only screen and (max-width: 384px) {
+    html{font-size: 60px;}
+}
+@media only screen and (max-width: 375px) {
+    html{font-size: 58.59375px;}
+}
+@media only screen and (max-width: 360px) {
+    html{font-size: 56.25px;}
+}
+@media only screen and (max-width: 320px) {
+    html{font-size: 50px;}
+}
+
+*{margin: 0;padding: 0;}
+html, body {
+    font-family: '微软雅黑';
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: #000;
+}
+ul, li {
+    display: block;
+    list-style: none;
+}
+p {
+    display: block;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+em {
+    font-style: normal;
+}
+
+button {
+    font-family: Tahoma, Verdana, Arial;
+    font-weight: normal;
+}
+a, button, input, img {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+:focus {
+    outline: 0;
+}
+/* common */
+.clearfix {
+    zoom: 1
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.show{
+    display: block;
+}
+.hide {
+    display: none;
+}
+/* visibility:hidden;虽然不显示但仍占据位置，但是也不能响应事件   display:none;不占据位置 */
+.hidden {
+    visibility: hidden;
+}
+/* ios设备平滑滚动 */
+.smooth_slide {
+    -webkit-overflow-scrolling: touch;
+}
+
+#landscape{
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url('../img/landscape.jpg') 50% 50%;
+    background-size: cover;
+    z-index: 99999;
+}
+#main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+}
+#log{
+    position: absolute;
+    top:0;
+    left:0;
+    font-size: 0.16rem;
+    padding:0.2rem;
+    z-index: 100000;
+    color: #fff;
+}
+#share_page{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 10000;
+    width:100%;
+    height: 100%;
+    display: none;
+}
+.qr_code{
+    width:3.8rem;
+    height: auto;
+    display: block;
+    margin: 1.3rem auto 0;
+    animation: updown 3s infinite ease-in-out;
+}
+.share_words{
+    width:4.52rem;
+    height: auto;
+    display: block;
+    margin: 0.88rem auto 0;
+}
+.share_btn{
+    width:1.27rem;
+    height: auto;
+    display: block;
+    margin: 0.72rem auto 0;
+    animation: opacity 1s infinite ease-in-out;
+}
+.share_tips{
+    position: absolute;
+    width:0.69rem;
+    height: auto;
+    top:0.47rem;
+    right:0.18rem;
+    animation: updown_quick 1s infinite ease-in-out;
+    display: none;
+}
+@keyframes updown{
+    0%,100%{transform: translate3d(0,-5%,0);}
+    50%{transform: translate3d(0,0,0);}
+}
+@keyframes updown_quick{
+    0%,100%{transform: translate3d(0,10%,0);}
+    50%{transform: translate3d(0,0,0);}
+}
+@keyframes opacity{
+    0%,100%{opacity: 0.8;}
+    50%{opacity: 1;}
+}
